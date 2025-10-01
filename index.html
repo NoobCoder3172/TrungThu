@@ -7,13 +7,43 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(to top, #ffdde1, #ee9ca7);
+      background: radial-gradient(circle at top, #ffd1dc, #ff9aa2);
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
       font-family: "Segoe UI", sans-serif;
+    }
+
+    /* Mặt trăng */
+    #moon {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #fffacd 0%, #ffd700 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(255,255,200,0.8);
+      z-index: 0;
+    }
+
+    /* Ngôi sao lung linh */
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #fff9a6;
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: twinkle 1.5s infinite alternate;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0% {opacity: 0.4;}
+      50% {opacity: 1;}
+      100% {opacity: 0.4;}
     }
 
     /* Nút bấm */
@@ -31,9 +61,15 @@
       cursor: pointer;
       z-index: 1000;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      animation: pulse 1.5s infinite;
     }
     #playBtn:hover {
       background: #ff3355;
+    }
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
     }
 
     /* Hình ảnh bay */
@@ -41,12 +77,13 @@
       position: absolute;
       width: 120px;
       animation: floatUp 12s linear infinite;
+      z-index: 1;
     }
     @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+      0% { transform: translateY(100vh) translateX(0) scale(0.8); opacity: 0; }
       10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-120vh) scale(1); opacity: 0; }
+      50% { transform: translateY(50vh) translateX(20px) scale(1); }
+      100% { transform: translateY(-120vh) translateX(-10px) scale(1); opacity: 0; }
     }
 
     /* Trái tim */
@@ -57,6 +94,7 @@
       background: red;
       transform: rotate(-45deg);
       animation: floatHeart 6s linear infinite;
+      z-index: 1;
     }
     .heart::before,
     .heart::after {
@@ -78,11 +116,12 @@
     /* Câu chúc */
     .message {
       position: absolute;
-      font-size: 20px;
+      font-size: 26px;
       font-weight: bold;
-      color: #fff;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      color: #fff8a6; /* vàng nhạt dễ nhìn */
+      text-shadow: 0 0 5px #fff, 0 0 10px #ffd700, 0 0 15px #ffea00;
       animation: floatMsg 10s linear forwards;
+      z-index: 2;
     }
     @keyframes floatMsg {
       0% { transform: translateY(100vh); opacity: 0; }
@@ -93,6 +132,9 @@
 </head>
 <body>
 
+  <!-- Mặt trăng -->
+  <div id="moon"></div>
+
   <!-- Nhạc nền -->
   <audio id="bgMusic" loop>
     <source src="https://NoobCoder3172.github.io/TrungThu/ThangCuoi.mp3" type="audio/mpeg">
@@ -102,6 +144,17 @@
   <button id="playBtn">🌕 Nhấn vô đây nè 🌸</button>
 
   <script>
+    // Tạo sao
+    for(let i=0;i<50;i++){
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random()*window.innerWidth + "px";
+      star.style.top = Math.random()*window.innerHeight/2 + "px";
+      star.style.width = (Math.random()*2 + 2) + "px"; // to hơn
+      star.style.height = star.style.width;
+      document.body.appendChild(star);
+    }
+
     const messages = [
       "🌕 Trung Thu sum vầy, chúc bạn thật nhiều hạnh phúc!",
       "🍂 Chúc bạn và gia đình một mùa trăng an lành, ấm áp!",
@@ -169,6 +222,5 @@
       }).catch(e => console.log("Không phát được nhạc:", e));
     });
   </script>
-
 </body>
 </html>
