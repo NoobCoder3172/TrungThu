@@ -93,7 +93,7 @@
       height: 20px;
       background: red;
       transform: rotate(-45deg);
-      animation: floatHeart 6s linear infinite;
+      animation: floatHeart 8s linear infinite;
       z-index: 1;
     }
     .heart::before,
@@ -110,7 +110,7 @@
     @keyframes floatHeart {
       0% { transform: translateY(0) rotate(-45deg) scale(0.5); opacity: 0; }
       30% { opacity: 1; }
-      100% { transform: translateY(-200px) rotate(-45deg) scale(1); opacity: 0; }
+      100% { transform: translateY(-300px) rotate(-45deg) scale(1); opacity: 0; }
     }
 
     /* Câu chúc */
@@ -120,11 +120,11 @@
       font-weight: bold;
       color: #fff8a6; /* vàng nhạt dễ nhìn */
       text-shadow: 0 0 5px #fff, 0 0 10px #ffd700, 0 0 15px #ffea00;
-      animation: floatMsg 10s linear forwards;
+      animation: floatMsg 18s linear forwards; /* trôi chậm hơn */
       z-index: 2;
     }
     @keyframes floatMsg {
-      0% { transform: translateY(100vh); opacity: 0; }
+      0% { transform: translateY(90vh); opacity: 1; }
       20% { opacity: 1; }
       100% { transform: translateY(-120vh); opacity: 0; }
     }
@@ -150,24 +150,51 @@
       star.className = "star";
       star.style.left = Math.random()*window.innerWidth + "px";
       star.style.top = Math.random()*window.innerHeight/2 + "px";
-      star.style.width = (Math.random()*2 + 2) + "px"; // to hơn
+      star.style.width = (Math.random()*2 + 2) + "px";
       star.style.height = star.style.width;
       document.body.appendChild(star);
     }
 
-    const messages = [
-      "🌕 Trung Thu sum vầy, chúc bạn thật nhiều hạnh phúc!",
-      "🍂 Chúc bạn và gia đình một mùa trăng an lành, ấm áp!",
-      "✨ Trăng rằm sáng tỏ, tình cảm dạt dào!",
-      "🌸 Chúc bạn Trung Thu vui vẻ, tràn đầy yêu thương!",
-      "💖 Trung Thu gắn kết, niềm vui bất tận!"
-    ];
+const messages = [
+  "🎑 Chúc em luôn may mắn, mọi điều tốt đẹp đến bên em.",
+  "💖 Xinh gái quá trài ơi, nhìn là muốn ... luôn á :))",
+  "💖 Mong em cười nhiều hơn, vui vẻ hơn và hạnh phúc mỗi ngày nhenn.",
+  "😂 Suốt ngày dọa block với bai thôi :))) May anh mặt dày hơn trăng rằm.",
+  "🌸 Trung Thu này ăn bánh ngon nha, đừng quên nghỉ ngơi và vui vẻ nhé!",
+  "🌙 Lúc nào cũng thức tới 3-4h sáng, khổ quá, biết là dl dí nhưng được thì nghỉ sớm chút nhoaa.",
+  "✨ Chúc mọi điều tốt đẹp đều đến với em.",
+  "🌸 Nhớ mặc ấm khi đi ra ngoài nhó, đông đến cũng lạnh lắm đấy.",
+  "🍜 Suốt ngày ăn cháo với mì tôm cay vl :)) Ăn gì cứ nhắn anh là được mà nha.",
+  "🍪 Bánh Trung Thu ngon chưa? Ăn xong nhớ nhắn anh thử vị nhé!",
+  "🌕 Trăng đẹp vl, mong em lúc nào cũng như ánh trăng vậy.",
+  "💛 Dù xa nhưng anh vẫn muốn gửi em 1 tỉ lời chúc ấm áp :))",
+  "🌟 Mong đêm nay em ngủ ngon, mơ những điều đẹp nhất.",
+  "🙏 Cảm ơn em nhiều nha, mọi điều em làm cho anh đều quý lắm.",
+  "🌸 Chúc em Trung Thu vui vẻ, ăn nhiều bánh và nhận thật nhiều yêu thương.",
+  "🌸 Hết ời á :)) mún nghe chúc lại thì cứ xem típ nhóoooo."
+];
+
 
     const images = [
-      "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-      "https://cdn-icons-png.flaticon.com/512/4151/4151022.png",
-      "https://cdn-icons-png.flaticon.com/512/4151/4151033.png",
-      "https://cdn-icons-png.flaticon.com/512/4151/4151045.png"
+      "anh1.jpg",
+      "anh2.jpg",
+      "anh3.jpg",
+      "anh4.jpg",
+      "anh5.jpg",
+      "anh6.jpg",
+      "anh7.jpg",
+      "anh8.jpg",
+      "anh9.jpg",
+      "anh11.jpg",
+      "anh12.jpg",
+      "anh13.jpg",
+      "anh14.jpg",
+      "anh15.jpg",
+      "anh16.jpg",
+      "anh17.jpg",
+      "anh18.jpg",
+      "anh19.jpg",
+      "anh10.jpg"
     ];
 
     function createHeart() {
@@ -175,40 +202,60 @@
       heart.className = "heart";
       document.body.appendChild(heart);
 
+      // random vị trí toàn màn hình
       heart.style.left = Math.random() * window.innerWidth + "px";
-      const size = Math.random() * 15 + 10;
+      heart.style.top = Math.random() * window.innerHeight + "px";
+
+      const size = Math.random() * 20 + 10;
       heart.style.width = size + "px";
       heart.style.height = size + "px";
-      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+      heart.style.animationDuration = (Math.random() * 4 + 5) + "s";
 
-      setTimeout(() => heart.remove(), 7000);
+      setTimeout(() => heart.remove(), 10000);
     }
 
-    function createImage() {
-      const img = document.createElement("img");
-      img.src = images[Math.floor(Math.random() * images.length)];
-      img.className = "floating-img";
-      document.body.appendChild(img);
+let imgIndex = 0;
 
-      img.style.left = Math.random() * (window.innerWidth - 100) + "px";
-      img.style.animationDuration = (Math.random() * 8 + 10) + "s";
-      const size = Math.random() * 50 + 80;
-      img.style.width = size + "px";
+function createImage() {
+  const img = document.createElement("img");
+  img.src = images[imgIndex];  // lấy ảnh theo thứ tự
+  img.className = "floating-img";
+  document.body.appendChild(img);
 
-      setTimeout(() => img.remove(), 15000);
-    }
+  // vị trí ngẫu nhiên để bay khắp màn hình
+  img.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  img.style.animationDuration = (Math.random() * 8 + 10) + "s";
+  const size = Math.random() * 50 + 80;
+  img.style.width = size + "px";
 
-    function createMessage() {
-      const msg = document.createElement("div");
-      msg.className = "message";
-      msg.textContent = messages[Math.floor(Math.random() * messages.length)];
-      document.body.appendChild(msg);
+  setTimeout(() => img.remove(), 15000);
 
-      msg.style.left = Math.random() * (window.innerWidth - 300) + "px";
-      msg.style.animationDuration = (Math.random() * 6 + 8) + "s";
+  // tăng index tuần tự, quay lại đầu khi hết
+  imgIndex++;
+  if(imgIndex >= images.length){
+    imgIndex = 0;
+  }
+}
 
-      setTimeout(() => msg.remove(), 12000);
-    }
+
+
+let msgIndex = 0; // lưu câu chúc hiện tại
+
+function createMessage() {
+  const msg = document.createElement("div");
+  msg.className = "message";
+  msg.textContent = messages[msgIndex]; // lấy câu chúc theo thứ tự
+  document.body.appendChild(msg);
+
+  msg.style.left = Math.random() * (window.innerWidth - 300) + "px";
+  msg.style.animationDuration = (Math.random() * 5 + 20) + "s"; // trôi mượt hơn
+
+  setTimeout(() => msg.remove(), 25000);
+
+  // Cập nhật index để lần sau hiển thị câu tiếp theo
+  msgIndex++;
+  if(msgIndex >= messages.length) msgIndex = 0; // quay lại câu đầu
+}
 
     document.getElementById("playBtn").addEventListener("click", () => {
       const music = document.getElementById("bgMusic");
@@ -216,9 +263,9 @@
         document.getElementById("playBtn").style.display = "none";
 
         // Bắt đầu hiệu ứng
-        setInterval(createHeart, 600);
+        setInterval(createHeart, 500); // trái tim khắp màn hình
         setInterval(createImage, 2500);
-        setInterval(createMessage, 4000);
+        setInterval(createMessage, 6300);
       }).catch(e => console.log("Không phát được nhạc:", e));
     });
   </script>
